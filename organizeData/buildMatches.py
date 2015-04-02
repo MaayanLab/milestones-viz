@@ -103,7 +103,8 @@ cellIdx = {cell['cell']:i for i,cell in enumerate(sortedCells)}
 centerAssays = list(set([(item['center'],item['assayClass']) for item in matches]))
 serieses = []
 for centerAssay in centerAssays:
-	serieses.append([[pertIdx[match['pert']+','+match['pertClass']],cellIdx[match['cell']]] for match in
+	# coordinates start with 1
+	serieses.append([[pertIdx[match['pert']+','+match['pertClass']]+1,cellIdx[match['cell']]+1] for match in
 		matches if match['center']==centerAssay[0] and match['assayClass']==centerAssay[1]])
 
 chartInput = {}
@@ -113,4 +114,4 @@ chartInput['centerAssays'] = centerAssays
 chartInput['serieses'] = serieses
 import json
 with open('../app/public/data/chartInput','w') as cf:
-    cf.write(json.dumps(chartInput))
+	cf.write(json.dumps(chartInput))

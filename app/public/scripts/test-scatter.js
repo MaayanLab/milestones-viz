@@ -60,23 +60,23 @@
             $.getJSON('data/chartInput',function(input){
                 option.tooltip.formatter = function(params){
                         return params.seriesName + ' <br/>'
-                        + input.perts[params.value[0]].pert + ', '
-                        + input.cells[params.value[1]].cell
+                        + input.perts[params.value[0]-1].pert + ', '
+                        + input.cells[params.value[1]-1].cell
                 };
                 option.xAxis[0].axisLabel = {
                     formatter: function(v){
-                        if(v>input.perts.length-1)
+                        if(v>input.perts.length || v<=0)
                             return ''
                         else
-                            return input.perts[v].pert
+                            return input.perts[v-1].pert
                     }
                 };
                 option.yAxis[0].axisLabel = {
                     formatter: function(v){
-                        if(v>input.cells.length-1)
+                        if(v>input.cells.length || v<=0)
                             return ''
                         else
-                            return input.cells[v].cell
+                            return input.cells[v-1].cell
                     }
                 };
                 // set symbol and color
@@ -128,8 +128,8 @@
                         markLine:{
                             data:[
                                 [
-                                    {name: '', value: 141, xAxis: 141.5, yAxis: -10}, 
-                                    {name: '', xAxis: 141.5, yAxis: 58}
+                                    {name: '', value: 142, xAxis: 142.5, yAxis: -10}, 
+                                    {name: '', xAxis: 142.5, yAxis: 58}
                                 ]
                             ]
                         }
@@ -141,8 +141,8 @@
                         markLine:{
                             data:[
                                 [
-                                    {name: '', value: 17, xAxis: 158.5, yAxis: -10}, 
-                                    {name: '', xAxis: 158.5, yAxis: 58}
+                                    {name: '', value: 17, xAxis: 159.5, yAxis: -10}, 
+                                    {name: '', xAxis: 159.5, yAxis: 58}
                                 ]
                             ]
                         }
@@ -154,8 +154,8 @@
                         markLine:{
                             data:[
                                 [
-                                    {name: '', value: 108, xAxis: 265.5, yAxis: -10}, 
-                                    {name: '', xAxis: 265.5, yAxis: 58}
+                                    {name: '', value: 108, xAxis: 266.5, yAxis: -10}, 
+                                    {name: '', xAxis: 266.5, yAxis: 58}
                                 ]
                             ]
                         }
