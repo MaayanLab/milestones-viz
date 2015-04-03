@@ -100,14 +100,45 @@ cell['center'] == 'NeuroLINCS-Thompson']
 sortedCells = (sorted(fourCenterCells,key=lambda x:(x['cellType'],x['cell'])) +
 sorted(twoCenterCells,key=lambda x:(x['cellType'],x['cell'])))
 
-pertIdx = {pert['pert']+','+pert['pertClass']:i for i,pert in enumerate(sortedPerts)}
+pertIdx = {(pert['pert'],pert['pertClass']):i for i,pert in enumerate(sortedPerts)}
 cellIdx = {cell['cell']:i for i,cell in enumerate(sortedCells)}
+
+# build overlap meta info for each intersection
+tooltipInfo = {}
+for match in matches:
+	# coordinates start with 1
+	matchPertIdx = pertIdx[(match['pert'], match['pertClass'])]+1
+	matchCellIdx = cellIdx[match['cell']]+1
+	if matchPertIdx not in tooltipInfo:
+		tooltipInfo[matchPertIdx] = {}
+	if matchCellIdx not in tooltipInfo[matchPertIdx]:
+		tooltipInfo[matchPertIdx][matchCellIdx] = []
+	tooltipInfo[matchPertIdx][matchCellIdx].append([match['center'],
+		match['assayClass']])
+
+for pIdx in tooltipInfo:
+	for cIdx in tooltipInfo[pIdx]:
+		info = tooltipInfo[pIdx][cIdx]
+		if len(info) == 1:
+			tooltipInfo[pIdx][cIdx] = info[0][0]+','+info[0][1]
+		else:
+			byCenter = {}
+			for item in info:
+				if item[0] not in byCenter:
+					byCenter[item[0]] = []
+				byCenter[item[0]].append(item[1])
+			rows = []
+			for key in byCenter:
+				rows.append(key+','+'/'.join(list(set(byCenter[key]))))
+			tooltipInfo[pIdx][cIdx] = '<br/>'.join(rows)
+
+			
 
 centerAssays = list(set([(item['center'],item['assayClass']) for item in matches]))
 serieses = []
 for centerAssay in centerAssays:
 	# coordinates start with 1
-	serieses.append([[pertIdx[match['pert']+','+match['pertClass']]+1,cellIdx[match['cell']]+1] for match in
+	serieses.append([[pertIdx[(match['pert'], match['pertClass'])]+1,cellIdx[match['cell']]+1] for match in
 		matches if match['center']==centerAssay[0] and match['assayClass']==centerAssay[1]])
 
 chartInput = {}
@@ -115,6 +146,7 @@ chartInput['perts'] = sortedPerts
 chartInput['cells'] = sortedCells
 chartInput['centerAssays'] = centerAssays
 chartInput['serieses'] = serieses
+chartInput['tooltip'] = tooltipInfo
 import json
 with open('../app/public/data/chartInput','w') as cf:
 	cf.write(json.dumps(chartInput))

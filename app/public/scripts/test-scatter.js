@@ -13,6 +13,7 @@
         ],
         function (ec) {
             //--- 折柱 ---
+            var ecConfig = require('echarts/config');
             var myChart = ec.init(document.getElementById('main'));
             option = {
                 title : {
@@ -59,7 +60,8 @@
                     
             $.getJSON('data/chartInput',function(input){
                 option.tooltip.formatter = function(params){
-                        return params.seriesName + ' <br/>'
+                        return input.tooltip[params.value[0]][params.value[1]]
+                        + ' <br/>'
                         + input.perts[params.value[0]-1].pert + ', '
                         + input.cells[params.value[1]-1].cell
                 };
@@ -83,15 +85,14 @@
                 };
                 // set symbol and color
                 // var colors =  d3.scale.category10().range();
-                var colors = ["#ff7f0e","#17becf", "#2ca02c", 
-                "#e7969c", "#bcbd22", "#e377c2"];
-                var centers = _.uniq(_.map(input.centerAssays,function(centerAssay){
-                    return centerAssay[0];
-                }));
-                var centerColorMap = {}
-                centers.forEach(function(e,i){
-                    centerColorMap[e] = colors[i];
-                })
+                var centerColorMap = {
+                    'Broad-Golub':'#e377c2',
+                    'Broad-Jaffe':'#bcbd22',
+                    'HMS-Sorger':'#17becf',
+                    'ISMMS-Iyengar':'#e7969c',
+                    'OHSU-Gray':'#ff7f0e',
+                    'NeuroLINCS-Thompson':'#2ca02c'
+                }
                 var assaySymbolMap = {
                     'image':'emptyRectangle',
                     'transcriptomic':'emptyTriangle',
@@ -191,6 +192,9 @@
                 // option.legend = {};
                 // option.legend.data = [{name:"Broad",textStyle:{},icon:"emptyTriangle"}]
                 myChart.setOption(option);
+                myChart.on(ecConfig.EVENT.CLICK,function(d,e){
+                    console.log(d,e);
+                });
             })// chartInput callback
         } // main function
     );// require
