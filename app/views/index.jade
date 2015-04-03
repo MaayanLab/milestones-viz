@@ -4,23 +4,32 @@ html(lang='en', ng-app='')
     title 
     link(rel='shortcut icon', href='css/images/?.ico', type='image/x-icon')
     //style
-    //- link(rel='stylesheet', href='libraries/font-awesome/css/font-awesome.min.css')
-    //- link(rel='stylesheet', type='text/css', href='libraries/bootstrap/dist/css/bootstrap.min.css')
-    link(rel='stylesheet', href='css/main.css')     
+    link(rel='stylesheet', href='libraries/font-awesome/css/font-awesome.min.css')
+    link(rel='stylesheet', type='text/css', href='libraries/bootstrap/dist/css/bootstrap.min.css')
+    link(rel='stylesheet', href='css/main.css')
+    //- link(rel='stylesheet',href='libraries/jquery-ui/themes/base/jquery-ui.min.css')     
     // libraries 
     script(src="libraries/echarts/build/dist/echarts.js")
     script(src='libraries/jquery/jquery.min.js')
+    script(src="versioned/jquery-ui.min.js")
     //- script(src='libraries/string/lib/string.min.js')
     script(src='libraries/underscore/underscore-min.js')
     //- script(src="libraries/d3/d3.min.js")
     //- script(src='libraries/angular/angular.js')     
     //- script(src='versioned/ui-bootstrap-tpls-0.12.0.min.js')
-    // scripts
     //- script(src='scripts/services.js')
     //- script(src='scripts/app.js')
     //- script(src='scripts/controllers.js')   
   body(ng-controller='')
     img(src="css/img/legend.png" class="legend")
+    div(id='dView' class="detail-view")
+        a(class="btn" id="close")
+            i(class="fa fa-times")
+        div(id="dynamic")
+            div
+                div NeuroLINCS
+                div xyz
+                div dafda
     div(id="main", style="height:800px;padding:10px;")
     //- div(id="mainMap", style="height:500px;border:1px solid #ccc;padding:10px;")
     //- div good

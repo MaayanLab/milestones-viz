@@ -3,3 +3,45 @@
   left: 700px;
   width: 500px;
 }
+
+.detail-view{
+	width:400px;
+	border-style: solid;
+  	border-width: thin;;
+  	z-index: 999999999;
+  	background-color: white;
+  	/*left:1041px;*/
+  	left:1038px;
+  	top:74px;
+  	position: absolute;
+  	padding:5px;
+  	display: none;
+}
+
+#close{
+	float:right;
+	padding-top:0px;
+	padding-right:5px;
+}
+
+#dynamic{
+	margin-top: 5px;
+	margin-left:3px;
+}
+
+.pert-cell{
+	font-weight: bold;
+}
+
+.milestone{
+	margin-top: 4px;
+}
+
+.center{
+	font-size: 1.2em;
+	font-style: italic;
+}
+
+.assay-info{
+	font-size: 0.7em;
+}

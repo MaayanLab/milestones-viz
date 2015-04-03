@@ -65,6 +65,7 @@ for group in groups:
 			match["pertClass"] = group["pertClass"]
 			match["assayClass"] = group["assayClass"]
 			match["center"] = doc["center"]
+			match['id'] = group['id']
 			matches.append(match)
 		else:
 			for pert in doc["perturbagens"]:
@@ -83,6 +84,7 @@ for group in groups:
 				match["pertClass"] = group["pertClass"]
 				match["assayClass"] = group["assayClass"]
 				match["center"] = doc["center"]
+				match['id'] = group['id']
 				matches.append(match)
 	if eDoc:
 		eDocs.append(doc)
@@ -112,15 +114,19 @@ for match in matches:
 	if matchPertIdx not in tooltipInfo:
 		tooltipInfo[matchPertIdx] = {}
 	if matchCellIdx not in tooltipInfo[matchPertIdx]:
-		tooltipInfo[matchPertIdx][matchCellIdx] = []
-	tooltipInfo[matchPertIdx][matchCellIdx].append([match['center'],
+		tooltipInfo[matchPertIdx][matchCellIdx] = {}
+		tooltipInfo[matchPertIdx][matchCellIdx]['centerAssays'] = []
+		tooltipInfo[matchPertIdx][matchCellIdx]['ids'] = []
+	tooltipInfo[matchPertIdx][matchCellIdx]['centerAssays'].append([match['center'],
 		match['assayClass']])
+	tooltipInfo[matchPertIdx][matchCellIdx]['ids'].append(match['id'])
 
 for pIdx in tooltipInfo:
 	for cIdx in tooltipInfo[pIdx]:
-		info = tooltipInfo[pIdx][cIdx]
+		tooltipInfo[pIdx][cIdx]['ids'] = list(set(tooltipInfo[pIdx][cIdx]['ids']))
+		info = tooltipInfo[pIdx][cIdx]['centerAssays']
 		if len(info) == 1:
-			tooltipInfo[pIdx][cIdx] = info[0][0]+','+info[0][1]
+			tooltipInfo[pIdx][cIdx]['centerAssays'] = info[0][0]+','+info[0][1]
 		else:
 			byCenter = {}
 			for item in info:
@@ -130,7 +136,7 @@ for pIdx in tooltipInfo:
 			rows = []
 			for key in byCenter:
 				rows.append(key+','+'/'.join(list(set(byCenter[key]))))
-			tooltipInfo[pIdx][cIdx] = '<br/>'.join(rows)
+			tooltipInfo[pIdx][cIdx]['centerAssays'] = '<br/>'.join(rows)
 
 			
 

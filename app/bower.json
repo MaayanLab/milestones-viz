@@ -16,6 +16,7 @@
     "angular-smart-table":"1.4.5",
     "angular-bootstrap-toggle-switch":"0.5.x",
     "echarts":"2.2.1",
-    "d3":"3.5.5"
+    "d3":"3.5.5",
+    "jquery-ui":"1.11.4"
   }
 }
