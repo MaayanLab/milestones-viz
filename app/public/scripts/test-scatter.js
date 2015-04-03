@@ -18,7 +18,8 @@
             option = {
                 title : {
                     text: 'LINCS Milestones Overview',
-                    subtext: 'An interactive plot'
+                    subtext: 'An interactive plot',
+                    padding: 0
                 },
                 tooltip : {
                     trigger: 'axis',
@@ -38,7 +39,7 @@
                         mark : {
                             show: true,
                             title:{
-                                mark: 'enable/disable mark line',
+                                mark: 'enable/disablemarkline',
                                 markUndo: 'undo mark line',
                                 markClear: 'clear mark line'
                             }},
