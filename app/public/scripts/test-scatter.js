@@ -69,7 +69,8 @@
                             return ''
                         else
                             return input.perts[v-1].pert
-                    }
+                    },
+                    'interval':function(indx){return true}
                 };
                 option.yAxis[0].axisLabel = {
                     formatter: function(v){
@@ -77,7 +78,8 @@
                             return ''
                         else
                             return input.cells[v-1].cell
-                    }
+                    },
+                    'interval':0
                 };
                 // set symbol and color
                 // var colors =  d3.scale.category10().range();
@@ -117,10 +119,26 @@
                     series.type = 'scatter';
                     series.data = input.serieses[i];
                     if(e[1]=='proteomic')
-                        series.symbolSize = 6
+                        series.symbolSize = 5.5
+                    if(e[1]=='image')
+                        series.symbolSize = 5.5
                     option.series.push(series);
                 });
                 // set Marklines
+                pertClassCount = {}
+                currentClass = input.perts[0].pertClass;
+                count = 0
+                input.perts.forEach(function(e,i){
+                    if(e.pertClass==currentClass)
+                        count = count+1
+                    else{
+                        pertClassCount[currentClass] = {};
+                        pertClassCount[currentClass].count = count;
+                        pertClassCount[currentClass].x = i
+                        count = 1;
+                        currentClass = e.pertClass;
+                    }
+                });
                 option.series.push({
                         name:'external perturbations end here',
                         type:'scatter',
@@ -128,8 +146,11 @@
                         markLine:{
                             data:[
                                 [
-                                    {name: '', value: 142, xAxis: 142.5, yAxis: -10}, 
-                                    {name: '', xAxis: 142.5, yAxis: 58}
+                                    {name: '', value: pertClassCount['external'].count, 
+                                    xAxis: pertClassCount['external'].x+0.5,
+                                    yAxis: -10}, 
+                                    {name: '', xAxis: pertClassCount['external'].x+0.5,
+                                    yAxis: 58}
                                 ]
                             ]
                         }
@@ -141,8 +162,11 @@
                         markLine:{
                             data:[
                                 [
-                                    {name: '', value: 17, xAxis: 159.5, yAxis: -10}, 
-                                    {name: '', xAxis: 159.5, yAxis: 58}
+                                    {name: '', value: pertClassCount['genetic'].count,
+                                    xAxis: pertClassCount['genetic'].x+0.5, 
+                                    yAxis: -10}, 
+                                    {name: '', xAxis: pertClassCount['genetic'].x+0.5, 
+                                    yAxis: 58}
                                 ]
                             ]
                         }
@@ -154,17 +178,18 @@
                         markLine:{
                             data:[
                                 [
-                                    {name: '', value: 108, xAxis: 266.5, yAxis: -10}, 
-                                    {name: '', xAxis: 266.5, yAxis: 58}
+                                    {name: '', value: pertClassCount['microenvironment'].count, 
+                                    xAxis: pertClassCount['microenvironment'].x+0.5, 
+                                    yAxis: -10}, 
+                                    {name: '', xAxis: pertClassCount['microenvironment'].x+0.5, 
+                                    yAxis: 58}
                                 ]
                             ]
                         }
                 });
-                //set legend
-                option.legend = {};
-                option.legend.data = _.map(input.centerAssays,function(centerAssay){
-                    return centerAssay[0]+','+centerAssay[1];
-                })
+                // // set legend
+                // option.legend = {};
+                // option.legend.data = [{name:"Broad",textStyle:{},icon:"emptyTriangle"}]
                 myChart.setOption(option);
             })// chartInput callback
         } // main function

@@ -68,6 +68,9 @@ for group in groups:
 			matches.append(match)
 		else:
 			for pert in doc["perturbagens"]:
+				if pert['type'] == 'disease':
+					# disease is not a perturbagen
+					continue
 				match = {}
 				match["cell"] = cell["name"]
 				if "type" in cell:
