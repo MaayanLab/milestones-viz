@@ -35,11 +35,25 @@
                 toolbox: {
                     show : true,
                     feature : {
-                        mark : {show: true},
-                        dataZoom : {show: true},
-                        dataView : {show: true, readOnly: false},
-                        restore : {show: true},
-                        saveAsImage : {show: true}
+                        mark : {
+                            show: true,
+                            title:{
+                                mark: 'enable/disable mark line',
+                                markUndo: 'undo mark line',
+                                markClear: 'clear mark line'
+                            }},
+                        dataZoom : {
+                            show: true,
+                            title:{
+                                dataZoom: 'zoom in selected region',
+                                dataZoomReset: 'zoom out'
+                            }},
+                        restore : {
+                            show: true,
+                            title:"restore"},
+                        saveAsImage : {
+                            show: true,
+                            title:"save as image"}
                     }
                 },
                 xAxis : [
