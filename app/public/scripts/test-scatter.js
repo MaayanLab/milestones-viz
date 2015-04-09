@@ -240,7 +240,7 @@
                         });
                     });
                      $('#dView').css('display','block')
-                    console.log(d,e);
+                    // console.log(d,e);
                 });
                 $('#dView').draggable();
                 $('#close').click(function(){
