@@ -31,6 +31,31 @@ html(lang='en', ng-app='')
                 div xyz
                 div dafda
     div(id="main", style="height:800px;padding:10px;")
+    .container
+        .header
+            span Entires not included
+        .content
+            div 
+                span(class="center2") DTOXS 
+                |     (reason: cell-lines not sure)
+                ul
+                    li RNASeq.Cardiomyocyte "Efficacy/Toxicity Ratio" Joint project- Collaborators: ISMMS, UCI, HMS, Broad/Golub, Broad/Jaffe, OHSU & DCIC*
+                    li Proteomics.Cardiomyocyte "Efficacy/Toxicity Ratio" Joint project- Collaborators: ISMMS, UCI, HMS, Broad/Golub, Broad/Jaffe, OHSU & DCIC*
+                    li Western blots/PCR (validation assays).Cardiomyocyte "Efficacy/Toxicity Ratio" Joint project- Collaborators: ISMMS, UCI, HMS, Broad/Golub, Broad/Jaffe, OHSU & DCIC*
+            div 
+                span(class="center2") LINCS-HMS 
+                |    (reason: perturbations not sure)
+                ul
+                    li LJP5&6-growth inhibition/drug combitions: Sensitivity measures of 6 breast cancer cell lines to combition treatment of kinase inhibitors based on results of  dataset LJP5&6-growth inhibition/single drugs
+                    li LJP5&6-L1000/drug combitions: L1000 response of 6 breast cancer cell lines to treatment plates LJP7-9 (177 targeted drugs). Complement  to dataset LJP5&6-L1000/single drugs
+            div 
+                span(class="center2") NeuroLINCS 
+                |    (reason: perturbations not sure, QC entry)
+                ul
+                    li RNASeq for control and diseased iMNs plus perturbations
+                    li QC and SOP development for proteomic alysis  iPSC to  motor neuron differentiation
+                    li Quantitative discovery proteomics (SWATH), add perturbagens
+                    li Epigenomics-ATAC-Seq for control and disease iMNs plus perturbations
     div(style="display:none")
         | The following Milestone entries are not included because of missing information (mostly perturbations are not specified):
         ul
@@ -48,3 +73,4 @@ html(lang='en', ng-app='')
     //- div good
   //- script(src="scripts/test.js")
   script(src="scripts/test-scatter.js")
+  script(src="scripts/expandable.js")

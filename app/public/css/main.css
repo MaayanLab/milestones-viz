@@ -1,7 +1,7 @@
 .legend{
 	position: absolute;
-  left: 700px;
-  width: 500px;
+  left: 30%;
+  width: 600px;
 }
 
 .detail-view{
@@ -11,7 +11,7 @@
   	z-index: 999999999;
   	background-color: white;
   	/*left:1041px;*/
-  	left:1038px;
+  	left:56%;
   	top:74px;
   	position: absolute;
   	padding:5px;
@@ -44,4 +44,30 @@
 
 .assay-info{
 	font-size: 0.7em;
+}
+
+
+/*expandable*/
+.container {
+    width:100%;
+}
+.container div {
+    width:100%;
+}
+.container .header {
+    /*background-color:#d3d3d3;*/
+    padding: 2px;
+    cursor: pointer;
+    font-weight: bold;
+    width:200px;
+    border-style: solid;
+  	padding-left: 30px;
+  	border-width: thin;
+}
+.container .content {
+    display: none;
+    padding : 5px;
+}
+.center2{
+	font-weight: bold;
 }

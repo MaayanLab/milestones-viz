@@ -4,6 +4,7 @@ import sys
 sys.path.append(r'C:\Users\Luke\Documents\qn\py')
 import qn
 
+
 groups = []
 with open('categorized-editted.txt','r') as cf:
 	for line in cf:
@@ -95,17 +96,17 @@ perts = list({(v['pert'],v['pertClass']):v for v in matches}.values())
 cells = list({v['cell']:v for v in matches}.values())
 sortedPerts = sorted(perts,key=lambda x: (x['pertClass'],x['pert']))
 
-fourCenterCells = [cell for cell in cells if cell['center'] != "ISMMS-Iyengar" and
-cell['center'] != 'NeuroLINCS-Thompson']
-twoCenterCells = [cell for cell in cells if cell['center'] == "ISMMS-Iyengar" or 
-cell['center'] == 'NeuroLINCS-Thompson']
+fourCenterCells = [cell for cell in cells if cell['center'] != "DTOXS" and
+cell['center'] != 'NeuroLINCS']
+twoCenterCells = [cell for cell in cells if cell['center'] == "DTOXS" or 
+cell['center'] == 'NeuroLINCS']
 sortedCells = (sorted(fourCenterCells,key=lambda x:(x['cellType'],x['cell'])) +
 sorted(twoCenterCells,key=lambda x:(x['cellType'],x['cell'])))
 
 pertIdx = {(pert['pert'],pert['pertClass']):i for i,pert in enumerate(sortedPerts)}
 cellIdx = {cell['cell']:i for i,cell in enumerate(sortedCells)}
 
-# build overlap meta info for each intersection
+# build overlap meta info for each crosssection
 tooltipInfo = {}
 for match in matches:
 	# coordinates start with 1

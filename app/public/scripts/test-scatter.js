@@ -101,12 +101,12 @@
                 // set symbol and color
                 // var colors =  d3.scale.category10().range();
                 var centerColorMap = {
-                    'Broad-Golub':'#e377c2',
-                    'Broad-Jaffe':'#bcbd22',
-                    'HMS-Sorger':'#17becf',
-                    'ISMMS-Iyengar':'#e7969c',
-                    'OHSU-Gray':'#ff7f0e',
-                    'NeuroLINCS-Thompson':'#2ca02c'
+                    'Broad-LINCS-Transcriptomics':'#e377c2',
+                    'Broad-LINCS-PCCSE':'#bcbd22',
+                    'HMS-LINCS':'#17becf',
+                    'DTOXS':'#e7969c',
+                    'MEP-LINCS':'#ff7f0e',
+                    'NeuroLINCS':'#2ca02c'
                 }
                 var assaySymbolMap = {
                     'image':'emptyRectangle',
