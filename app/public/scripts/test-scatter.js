@@ -1,4 +1,7 @@
+ var idx = window.location.href.lastIndexOf('/');
+ var baseUrl = window.location.href.slice(0,idx+1);
  require.config({
+        baseUrl:baseUrl,
         paths: {
             echarts: '../libraries/echarts/build/dist'
         }
