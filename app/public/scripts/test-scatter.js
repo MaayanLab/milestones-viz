@@ -3,7 +3,7 @@
  require.config({
         baseUrl:baseUrl,
         paths: {
-            echarts: '../libraries/echarts/build/dist'
+            echarts: baseUrl+'libraries/echarts/build/dist'
         }
     });
     
