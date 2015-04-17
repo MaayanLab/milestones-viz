@@ -3,7 +3,8 @@
  require.config({
         baseUrl:baseUrl,
         paths: {
-            echarts: baseUrl+'libraries/echarts/build/dist'
+            echarts: baseUrl+'libraries/echarts/build/dist',
+            app: baseUrl+'scripts',
         }
     });
     
@@ -12,9 +13,10 @@
     require(
         [
             'echarts',
-            'echarts/chart/scatter'
+            'echarts/chart/scatter',
+            'app/SearchBox'
         ],
-        function (ec) {
+        function (ec,es,sb) {
             //--- 折柱 ---
             var ecConfig = require('echarts/config');
             var myChart = ec.init(document.getElementById('main'));
@@ -64,7 +66,7 @@
                     {
                         type : 'value',
                         scale:true,
-                        name:'perturbation'
+                        name:'perturbagen'
                     }
                 ],
                 yAxis : [
@@ -250,6 +252,8 @@
                     $('#dView').css('display','none');
                     $('#dynamic').children().remove();
                 });
+                // initialize searchbox
+                sb(input,option,myChart);
             })// chartInput callback
         } // main function
     );// require

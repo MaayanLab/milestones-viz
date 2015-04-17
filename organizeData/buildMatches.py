@@ -109,7 +109,7 @@ cellIdx = {cell['cell']:i for i,cell in enumerate(sortedCells)}
 # build overlap meta info for each crosssection
 tooltipInfo = {}
 for match in matches:
-	# coordinates start with 1
+	# coordinates start from 1
 	matchPertIdx = pertIdx[(match['pert'], match['pertClass'])]+1
 	matchCellIdx = cellIdx[match['cell']]+1
 	if matchPertIdx not in tooltipInfo:
@@ -144,7 +144,7 @@ for pIdx in tooltipInfo:
 centerAssays = list(set([(item['center'],item['assayClass']) for item in matches]))
 serieses = []
 for centerAssay in centerAssays:
-	# coordinates start with 1
+	# coordinates start from 1
 	serieses.append([[pertIdx[(match['pert'], match['pertClass'])]+1,cellIdx[match['cell']]+1] for match in
 		matches if match['center']==centerAssay[0] and match['assayClass']==centerAssay[1]])
 

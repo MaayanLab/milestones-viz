@@ -20,7 +20,7 @@ app.get('/meta',function(req,res){
 	})
 })
 
-
-app.listen(7070,function(){
-	console.log('server@7070');
+var port = 7070;
+app.listen(port,function(){
+	console.log('server@'+port);
 });

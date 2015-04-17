@@ -1,0 +1,24 @@
+ .tag{
+ 	display: inline-block;
+ 	border-style: solid;
+  border-width: thin;
+  padding-left: 6px;
+  padding-right: 5px;
+  border-radius: 10px;
+  margin-right:8px;
+ }
+
+ .destroy {
+	color: grey;
+  	cursor: pointer;
+  	margin-left: 3px;
+}
+
+.tag:hover .destroy {
+  	color: black;
+}
+
+/*.destroy:hover {
+  	
+}
+*/

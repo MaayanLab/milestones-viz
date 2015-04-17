@@ -1,13 +1,11 @@
-<html lang="en"><head>
+<html lang="en" ng-app='chart'>
+<head>
 	<meta charset="utf-8">
-	<title>jQuery UI Draggable - Default functionality</title>
+	<title>jy</title>
 	
 	<script src="libraries/jquery/jquery.min.js"></script>
-	<script src="versioned/jquery-ui.min.js"></script>
-	<style>
-	#draggable { width: 150px; padding: 0.5em; }
-	</style>
-	
+	<script src="libraries/angular/angular.min.js"></script>
+    <script src="scripts/app.js"></script>
 </head>
 <body>
 
@@ -15,8 +13,19 @@
 	<p>Drag me around</p>
 </div>
 
+<table ng-controller="tagTable">
+      <input ng-model="cc">
+      <toody>
+        <tr>
+          <td>Cells:</td>
+          <td id="cellTags">{{cells}}, {{cc}}</td>
+        </tr>
+        <tr>
+          <td>Perturbagens:</td>
+          <td id="perturbagenTags">{{perts}}</td>
+        </tr>
+      </toody>
+</table>
+
 <script>
-	
-		$( "#draggable" ).draggable();
-	
-	</script>
+</script>
