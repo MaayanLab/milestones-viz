@@ -71,3 +71,18 @@
 .center2{
 	font-weight: bold;
 }
+
+.tag-table{
+  margin-left: 100px;
+  width:80%;
+}
+
+.row-name-cell{
+  width:100px;
+  text-align:center;
+  height:40px;
+}
+
+.tag-cell{
+  text-align: left;
+}

@@ -36,20 +36,21 @@ html(lang='en', ng-app='chart')
                 div xyz
                 div dafda
     div(id="main", style="height:800px;padding:10px;")
-    table(ng-controller="tagTable")
-        toody
-            tr
-                td Cells:
-                td
-                    div(class="tag" ng-repeat="cell in cells") {{cell['cell']}}
-                        a(class="destroy" ng-click="removeCell(cell)")
-                            i(class="fa fa-times-circle")
-            tr
-                td Perturbagens:
-                td
-                    div(class="tag" ng-repeat="pert in perts") {{pert['pert']}}
-                        a(class="destroy" ng-click="removePert(pert)")
-                            i(class="fa fa-times-circle")
+    div(ng-controller="tagTable")
+        table(ng-if="cells.length || perts.length" class="table tag-table")
+            toody
+                tr
+                    td(class="row-name-cell") Cells:
+                    td(class="tag-cell")
+                        div(class="tag" ng-repeat="cell in cells") {{cell['cell']}}
+                            a(class="destroy" ng-click="removeCell(cell)")
+                                i(class="fa fa-times-circle")
+                tr
+                    td(class="row-name-cell") Perturbagens:
+                    td(class="tag-cell")
+                        div(class="tag" ng-repeat="pert in perts") {{pert['pert']}}
+                            a(class="destroy" ng-click="removePert(pert)")
+                                i(class="fa fa-times-circle")
     .container
         .header
             span Entires not included

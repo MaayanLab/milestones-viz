@@ -32,22 +32,24 @@
       </div>
     </div>
     <div id="main" style="height:800px;padding:10px;"></div>
-    <table ng-controller="tagTable">
-      <toody>
-        <tr>
-          <td>Cells:</td>
-          <td>
-            <div ng-repeat="cell in cells" class="tag">{{cell['cell']}}<a ng-click="removeCell(cell)" class="destroy"><i class="fa fa-times-circle"></i></a></div>
-          </td>
-        </tr>
-        <tr>
-          <td>Perturbagens:</td>
-          <td>
-            <div ng-repeat="pert in perts" class="tag">{{pert['pert']}}<a ng-click="removePert(pert)" class="destroy"><i class="fa fa-times-circle"></i></a></div>
-          </td>
-        </tr>
-      </toody>
-    </table>
+    <div ng-controller="tagTable">
+      <table ng-if="cells.length || perts.length" class="table tag-table">
+        <toody>
+          <tr>
+            <td class="row-name-cell">Cells:</td>
+            <td class="tag-cell">
+              <div ng-repeat="cell in cells" class="tag">{{cell['cell']}}<a ng-click="removeCell(cell)" class="destroy"><i class="fa fa-times-circle"></i></a></div>
+            </td>
+          </tr>
+          <tr>
+            <td class="row-name-cell">Perturbagens:</td>
+            <td class="tag-cell">
+              <div ng-repeat="pert in perts" class="tag">{{pert['pert']}}<a ng-click="removePert(pert)" class="destroy"><i class="fa fa-times-circle"></i></a></div>
+            </td>
+          </tr>
+        </toody>
+      </table>
+    </div>
     <div class="container">
       <div class="header"><span>Entires not included</span></div>
       <div class="content">
