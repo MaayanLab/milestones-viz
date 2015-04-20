@@ -106,11 +106,11 @@
                 // set symbol and color
                 // var colors =  d3.scale.category10().range();
                 var centerColorMap = {
-                    'Broad-LINCS-Transcriptomics':'#e377c2',
-                    'Broad-LINCS-PCCSE':'#bcbd22',
-                    'HMS-LINCS':'#17becf',
+                    'Broad LINCS Transcriptomics':'#e377c2',
+                    'Broad LINCS PCCSE':'#bcbd22',
+                    'HMS LINCS':'#17becf',
                     'DTOXS':'#e7969c',
-                    'MEP-LINCS':'#ff7f0e',
+                    'MEP LINCS':'#ff7f0e',
                     'NeuroLINCS':'#2ca02c'
                 }
                 var assaySymbolMap = {
