@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://readWriteUser:askQiaonan@loretta/LINCS');
+mongoose.connect('mongodb://readWriteUser:askQiaonan@10.91.53.62/LINCS');
 var Schema = mongoose.Schema({"assay":String,"assay-info":String},{collection:"milestones"})
 var detail = mongoose.model('detail',Schema);
 
