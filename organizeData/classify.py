@@ -22,5 +22,5 @@ with open('categorized.txt','w') as cf:
             perturbagen = doc["perturbagens"][0]
         else:
             perturbagen = "none"
-        cf.write("{0}\t{1}\t{2}\t{3}\t{4}\t{5}\n".format(doc["_id"],doc["center"],doc["assay"],
+        cf.write("{0}\t{1}\t{2}\t{3}\t{4}\t{5}\n".format(doc["lincs_id"],doc["center"],doc["assay"],
                  doc["assay-info"], perturbagen, json.dumps(doc["cell-lines"][0])))

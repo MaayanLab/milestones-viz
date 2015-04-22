@@ -49,7 +49,7 @@ coll = qn.getcoll('milestones',db="LINCS",inst="loretta",u="readWriteUser",
 matches = []
 eDocs = []
 for group in groups:
-	doc = coll.find_one({'_id':ObjectId(group['id'])})
+	doc = coll.find_one({'lincs_id':group['id']})
 	eDoc = False
 	for cell in doc["cell-lines"]:
 		if "name" not in cell:

@@ -14,7 +14,7 @@ app.use('/',express.static(__dirname + '/public'));
 app.get('/meta',function(req,res){
 	// console.log(typeof(req.query['ids']));
 	var ids = JSON.parse(req.query['ids']);
-	var query = detail.find({'_id':{$in:ids}})
+	var query = detail.find({'lincs_id':{$in:ids}})
 	.select('-_id assay assay-info center').lean().exec(function(err,docs){
 		res.send(docs);
 	})

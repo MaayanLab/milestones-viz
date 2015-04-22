@@ -21,7 +21,7 @@ html(lang='en', ng-app='chart')
     script(src='libraries/angular/angular.min.js')     
     //- script(src='versioned/ui-bootstrap-tpls-0.12.0.min.js')
     //- script(src='scripts/services.js')
-    script(src='scripts/app.js')
+    
     //- script(src='scripts/controllers.js')   
   body()
     div(id="search")
@@ -59,7 +59,7 @@ html(lang='en', ng-app='chart')
                 span(class="center2") DTOXS
                 |     (reason: cell-lines not sure)
                 ul
-                    li RNASeq.Cardiomyocyte "Efficacy/Toxicity Ratio" Joint project- Collaborators: ISMMS, UCI, HMS, Broad/Golub, Broad/Jaffe, OHSU & DCIC*
+                    li RNASeq.Cardiomyocyte "Efficacy/Toxicity Ratio" Joint projsect- Collaborators: ISMMS, UCI, HMS, Broad/Golub, Broad/Jaffe, OHSU & DCIC*
                     li Proteomics.Cardiomyocyte "Efficacy/Toxicity Ratio" Joint project- Collaborators: ISMMS, UCI, HMS, Broad/Golub, Broad/Jaffe, OHSU & DCIC*
                     li Western blots/PCR (validation assays).Cardiomyocyte "Efficacy/Toxicity Ratio" Joint project- Collaborators: ISMMS, UCI, HMS, Broad/Golub, Broad/Jaffe, OHSU & DCIC*
             div 
@@ -77,6 +77,7 @@ html(lang='en', ng-app='chart')
                     li Quantitative discovery proteomics (SWATH), add perturbagens
                     li Epigenomics-ATAC-Seq for control and disease iMNs plus perturbations
   if dev
+    script(src='scripts/app.js')
     script(src="scripts/test-scatter.js")
     script(src="scripts/expandable.js")
   else

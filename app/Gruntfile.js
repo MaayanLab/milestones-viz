@@ -53,7 +53,21 @@ module.exports = function(grunt) {
           script:'index.js'
         }
       }
-    }
+    },
+    // requirejs: {
+    //   compile: {
+    //     options: {
+    //       baseUrl: "public",
+    //       name: "scripts/test-scatter",
+    //       paths: {
+    //           echarts: "./libraries/echarts/build/dist/echarts",
+    //           scatter:"./libraries/echarts/build/dist/chart/scatter",
+    //           app: "./scripts"
+    //       },
+    //       out: "dist/compiled"
+    //     }
+    //   }
+    // }
   });
 
   grunt.loadNpmTasks('grunt-contrib-jade');
@@ -61,7 +75,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-express-server');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-requirejs');
 
   grunt.registerTask('default', ['express:dev','watch']);
   grunt.registerTask('release',['jade:release','uglify']);
+   // grunt.registerTask('r',['requirejs']);
 };
