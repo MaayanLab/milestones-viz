@@ -80,10 +80,10 @@
                     
             $.getJSON('data/chartInput',function(input){
                 option.tooltip.formatter = function(params){
-                        return input.tooltip[params.value[0]][params.value[1]].centerAssays
-                        + ' <br/>'
-                        + input.perts[params.value[0]-1].pert + ', '
+                        return input.perts[params.value[0]-1].pert + ', '
                         + input.cells[params.value[1]-1].cell
+                        + ' <br/>'
+                        + input.tooltip[params.value[0]][params.value[1]].centerAssays;
                 };
                 option.xAxis[0].axisLabel = {
                     formatter: function(v){
@@ -106,12 +106,18 @@
                 // set symbol and color
                 // var colors =  d3.scale.category10().range();
                 var centerColorMap = {
-                    'LINCS Transcriptomics':'#e377c2',
-                    'LINCS PCCSE':'#bcbd22',
-                    'HMS LINCS':'#17becf',
-                    'DTOXS':'#e7969c',
-                    'MEP LINCS':'#ff7f0e',
-                    'NeuroLINCS':'#2ca02c'
+                    // 'LINCS Transcriptomics':'#e377c2',
+                    // 'LINCS PCCSE':'#bcbd22',
+                    // 'HMS LINCS':'#17becf',
+                    // 'DTOXS':'#e7969c',
+                    // 'MEP LINCS':'#ff7f0e',
+                    // 'NeuroLINCS':'#2ca02c'
+                     'LINCS Transcriptomics':'#0B609A',
+                    'LINCS PCCSE':'#0B609A',
+                    'HMS LINCS':'#C90016',
+                    'DTOXS':'#17becf',
+                    'MEP LINCS':'#2ca02c',
+                    'NeuroLINCS':'#bcbd22'
                 }
                 var assaySymbolMap = {
                     'image':'emptyRectangle',

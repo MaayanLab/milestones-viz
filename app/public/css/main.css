@@ -1,7 +1,29 @@
 .legend{
 	position: absolute;
-  left: 30%;
-  width: 600px;
+left:50%;
+margin-left: -195px;
+z-index:99;
+  margin-top:10px;
+  /*width: 600px;*/
+}
+
+.legend-type{
+  height:20px;
+}
+
+.legend-center{
+  /*height:20px;*/
+}
+
+.legend-center img{
+    height:26px;
+    margin-left: 30px;
+    cursor: pointer;
+}
+
+.legend-center a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none;
 }
 
 .detail-view{

@@ -6,9 +6,10 @@
     <!--style-->
     <link rel="stylesheet" href="libraries/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="libraries/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/typeahead.css">
-    <link rel="stylesheet" href="css/tag.css">
+    <link rel="stylesheet" href="css/main.css">
+     <link rel="stylesheet" href="css/tag.css">
+
     <!-- libraries -->
     <script src="libraries/echarts/build/dist/echarts.js"></script>
     <script src="libraries/jquery/jquery.min.js"></script>
@@ -20,14 +21,22 @@
   <body>
     <div id="search">
       <input type="text" placeholder="search perturbagens or cells" class="typeahead">
-    </div><img src="css/img/legend.png" class="legend">
+    </div>
+    <div class="legend">
+      <div class="legend-center" ng-controller="legendCenter">
+        <a  target="_blank" href="{{centerMap[center]['url']}}" ng-repeat="center in centers">
+          <img  title="{{centerMap[center]['fullName']}}" ng-src="{{centerMap[center]['logo']}}">
+        </a>
+      </div>
+      <img src="css/img/Type.png" class="legend-type">
+    </div>
     <div id="dView" class="detail-view"><a id="close" class="btn"><i class="fa fa-times"></i></a>
       <div id="dynamic">
         <div>
           <div>NeuroLINCS</div>
           <div>xyz</div>
           <div>dafda</div>
-        </div>
+        </div>  
       </div>
     </div>
     <div id="main" style="height:800px;padding:10px;"></div>

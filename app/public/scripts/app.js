@@ -44,4 +44,52 @@ indexCtrl.controller('tagTable',['$scope',function($scope){
 		$(herald).trigger("pertTags:change",idx);
 	}
 	
+}])
+.controller('legendCenter',['$scope',function($scope){
+	$scope.centerMap = {
+		"LINCS Transcriptomics":{
+			fullName:"LINCS Center for Transcriptomics",
+			url:"http://www.lincscloud.org/",
+			logo:"css/img/Broad_T.png",
+			initial:'T',
+			color:"#0B609A"
+		},
+		"LINCS PCCSE":{
+			fullName:"LINCS Proteomic Characterization Center for Signaling and Epigenetics",
+			url:"http://www.lincsproject.org/centers/data-and-signature-generating-centers/broad-prx/",
+			logo:"css/img/Broad_P.png",
+			initial:'P',
+			color:"#0B609A"
+		},
+		"HMS LINCS":{
+			fullName:"HMS LINCS",
+			url:"http://lincs.hms.harvard.edu/",
+			logo:"css/img/HMS_H.png",
+			initial:'H',
+			color:"#C90016"
+		},
+		"DTOXS":{
+			fullName:"DToxS",
+			url:"http://research.mssm.edu/pst/DToxS/index.htm",
+			logo:"css/img/DTOXS_D.png",
+			initial:'D',
+			// color:"#D80B8C"
+			color:"#00AEEF"
+		},
+		"MEP LINCS":{
+			fullName:"MEP LINCS",
+			url:"http://www.lincsproject.org/centers/data-and-signature-generating-centers/oregon-u/",
+			logo:"css/img/MEP_M.png",
+			initial:'M',
+			color:"#66cc33"
+		},
+		"NeuroLINCS":{
+			fullName:"NeuroLINCS",
+			url:"http://www.lincsproject.org/centers/data-and-signature-generating-centers/neurolincs/",
+			logo:"css/img/NeuroLINCS_N.png",
+			initial:'N',
+			color:"#ffd200"
+		}
+	};
+	$scope.centers = [  "DTOXS","HMS LINCS",  "MEP LINCS", "NeuroLINCS","LINCS PCCSE","LINCS Transcriptomics"];
 }]);
