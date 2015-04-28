@@ -30,13 +30,21 @@
       </div>
       <img src="css/img/Type.png" class="legend-type">
     </div>
-    <div id="dView" class="detail-view"><a id="close" class="btn"><i class="fa fa-times"></i></a>
+    <div id="dView" class="detail-view" ng-style="{display: (show?'block':'none')}" ng-controller="draggable">
+      <a id="close" class="btn" ng-click="close()"><i class="fa fa-times"></i></a>
       <div id="dynamic">
-        <div>
-          <div>NeuroLINCS</div>
-          <div>xyz</div>
-          <div>dafda</div>
-        </div>  
+      <div class='pert-cell'>{{pert}}, {{cell}}</div>
+        <div class='milestone' ng-repeat="milestone in milestones">
+          <!-- <div class='center'>
+              {{milestone.center}}
+                
+          </div> -->
+          <div class='assay'>
+              <img  class="draggable-center-img" title="{{centerMap[milestone.center]['fullName']}}" ng-src="{{centerMap[milestone.center]['logo']}}">
+              {{milestone.assay}}
+          </div>
+          <div class='assay-info'>{{milestone.assayInfo}}</div>
+        </div>
       </div>
     </div>
     <div id="main" style="height:800px;padding:10px;"></div>
@@ -85,7 +93,7 @@
       </div>
     </div>
   </body>
-  <script src="scripts/app.js"></script>
   <script src="scripts/test-scatter.js"></script>
+   <script src="scripts/app.js"></script>
   <script src="scripts/expandable.js"></script>
 </html>

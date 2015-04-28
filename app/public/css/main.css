@@ -37,7 +37,12 @@ z-index:99;
   	top:74px;
   	position: absolute;
   	padding:5px;
-  	display: none;
+  	/*display: none;*/
+}
+
+.draggable-center-img{
+  width:20px;
+  vertical-align: top;
 }
 
 #close{
@@ -56,12 +61,16 @@ z-index:99;
 }
 
 .milestone{
-	margin-top: 4px;
+	margin-top: 10px;
 }
 
 .center{
 	font-size: 1.2em;
 	font-style: italic;
+}
+
+.assay{
+  font-size:1em;
 }
 
 .assay-info{

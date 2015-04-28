@@ -1,4 +1,4 @@
-var app = angular.module('chart', ['indexCtrl']);
+var app = angular.module('chart', ['indexCtrl','services']);
 
 // workaround to manipulate $scope in tagTable control from searchBox
 // var g= {};
@@ -45,8 +45,46 @@ indexCtrl.controller('tagTable',['$scope',function($scope){
 	}
 	
 }])
-.controller('legendCenter',['$scope',function($scope){
-	$scope.centerMap = {
+.controller('legendCenter',['$scope','centerMap',function($scope,centerMap){
+	$scope.centerMap = centerMap
+	$scope.centers = [  "DTOXS","HMS LINCS",  "MEP LINCS", "NeuroLINCS","LINCS PCCSE","LINCS Transcriptomics"];
+}])
+.controller('draggable',['$scope','centerMap','$http',function($scope,centerMap,$http){
+	$scope.centerMap = centerMap;
+	$scope.show = false;
+	$(herald).bind('item:click',function(e,item){
+		$scope.pert = item.pert;
+		$scope.cell = item.cell;
+		$http.get(baseUrl+'meta?ids='+JSON.stringify(item.ids)).success(function(data){
+		   $scope.milestones = _.map(data,function(doc){
+		   	   var milestone = {};
+               if(doc.assay.length>doc['assay-info'].length
+                   && doc.center != 'ISMMS-Iyengar'){
+                   milestone.assay = doc['assay-info'];
+                   milestone.assayInfo = doc['assay'];
+               }else{
+                   milestone.assay = doc['assay'];
+                   milestone.assayInfo = doc['assay-info'];
+               }
+               milestone.center = doc['center']
+               return milestone;
+		   });
+		   //only show after rendering
+		   $scope.show = true;
+		   // $scope.$digest();
+       });
+	});
+	$scope.close = function(){
+		$scope.show = false;
+	};
+}]);
+
+
+
+
+var services = angular.module('services',[]);
+services.factory('centerMap',function(){
+	return  {
 		"LINCS Transcriptomics":{
 			fullName:"LINCS Center for Transcriptomics",
 			url:"http://www.lincscloud.org/",
@@ -91,5 +129,4 @@ indexCtrl.controller('tagTable',['$scope',function($scope){
 			color:"#ffd200"
 		}
 	};
-	$scope.centers = [  "DTOXS","HMS LINCS",  "MEP LINCS", "NeuroLINCS","LINCS PCCSE","LINCS Transcriptomics"];
-}]);
+})

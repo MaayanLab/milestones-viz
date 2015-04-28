@@ -219,45 +219,17 @@
                 // option.legend.data = [{name:"Broad",textStyle:{},icon:"emptyTriangle"}]
                 myChart.setOption(option);
                 // set information box intereactions
-                    // define template
-                var pertCell = _.template("<div class='pert-cell'><%= pert %>, <%= cell %></div>");
-                var assayInfo = _.template(
-                    "<div class='milestone'>"+
-                    "<div class='center'><%= center %></div>"+
-                    "<div class='assay'><%= assay %></div>"+
-                    "<div class='assay-info'><%= assayInfo %></div>"+
-                    "</div>");
-                var bidx = window.location.href.lastIndexOf('/');
-                var baseUrl = window.location.href.slice(0,bidx+1); 
                 myChart.on(ecConfig.EVENT.CLICK,function(d,e){
-                    var pert = input.perts[d.data[0]-1].pert;
-                    var cell = input.cells[d.data[1]-1].cell;
-                    var ids = input.tooltip[d.data[0]][d.data[1]].ids;
-                    $('#dynamic').children().remove();
-                    $('#dynamic').append(pertCell({pert:pert,cell:cell}))
-                    $.get(baseUrl+'meta?ids='+JSON.stringify(ids),function(data){
-                        data.forEach(function(obj){
-                            var detail = {};
-                            if(obj.assay.length>obj['assay-info'].length
-                                && obj.center != 'ISMMS-Iyengar'){
-                                detail.assay = obj['assay-info'];
-                                detail.assayInfo = obj['assay'];
-                            }else{
-                                detail.assay = obj['assay'];
-                                detail.assayInfo = obj['assay-info'];
-                            }
-                            detail.center = obj['center']
-                            $('#dynamic').append(assayInfo(detail));
-                        });
-                    });
-                     $('#dView').css('display','block')
-                    // console.log(d,e);
+                    // clicked item
+                    var item = {};
+                    item.pert = input.perts[d.data[0]-1].pert;
+                    item.cell = input.cells[d.data[1]-1].cell;
+                    item.ids = input.tooltip[d.data[0]][d.data[1]].ids;
+                    // Correspondant is in the draggable controller.
+                    $(herald).trigger('item:click',item);
                 });
-                $('#dView').draggable();
-                $('#close').click(function(){
-                    $('#dView').css('display','none');
-                    $('#dynamic').children().remove();
-                });
+                $('#dView').draggable({});
+
                 // initialize searchbox
                 sb(input,option,myChart);
             })// chartInput callback
