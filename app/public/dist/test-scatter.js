@@ -4,7 +4,7 @@
         baseUrl:baseUrl,
         paths: {
             echarts:'libraries/echarts/build/dist',
-            app: 'scripts',
+            app: 'dist',
         }
     });
     

@@ -31,19 +31,26 @@ module.exports = function(grunt) {
         tasks:["jade:compile"]
       }
     },
-    // concat:{
-    //   options:{
-    //     seperator:";",
-    //   },
-    //   dist：{
-    //     src: ['public/scripts/test-scatter.js','public/scripts/expandable.js'],
-    //     dest: 'public/scripts/built.js'
-    //   }
-    // },
+    replace:{
+      dist: {
+        options: {
+          patterns: [
+            {
+              match: /app: 'scripts'/g,
+              replacement: "app: 'dist'"
+            },
+          ]
+        },
+        files: [
+          {expand: true, flatten: true, src: ['public/scripts/test-scatter.js'], dest: 'public/dist/'}
+        ]
+      }
+    },
     uglify:{
       built:{
         files:{
-          "public/dist/main.min.js":['public/scripts/test-scatter.js','public/scripts/expandable.js']
+          "public/dist/main.min.js":['public/dist/test-scatter.js','public/scripts/app.js','public/scripts/expandable.js'],
+          "public/dist/SearchBox.js":['public/scripts/SearchBox.js']
         }
       }
     },
@@ -75,9 +82,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-express-server');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-requirejs');
+  grunt.loadNpmTasks('grunt-replace');
 
   grunt.registerTask('default', ['express:dev','watch']);
-  grunt.registerTask('release',['jade:release','uglify']);
+  grunt.registerTask('release',['jade:release','replace','uglify:built']);
+  grunt.registerTask('test',['replace']);
    // grunt.registerTask('r',['requirejs']);
 };
