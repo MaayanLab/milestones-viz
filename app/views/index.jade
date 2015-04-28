@@ -6,8 +6,8 @@ html(lang='en', ng-app='chart')
     //style
     link(rel='stylesheet', href='libraries/font-awesome/css/font-awesome.min.css')
     link(rel='stylesheet', type='text/css', href='libraries/bootstrap/dist/css/bootstrap.min.css')
-    link(rel='stylesheet', href='css/main.css')
     link(rel='stylesheet', href='css/typeahead.css')
+    link(rel='stylesheet', href='css/main.css')
     link(rel='stylesheet', href='css/tag.css')
     //- link(rel='stylesheet',href='libraries/jquery-ui/themes/base/jquery-ui.min.css')     
     // libraries 
@@ -26,15 +26,21 @@ html(lang='en', ng-app='chart')
   body()
     div(id="search")
       input(type="text" placeholder="search perturbagens or cells" class="typeahead")
-    img(src="css/img/legend.png" class="legend")
-    div(id='dView' class="detail-view")
-        a(class="btn" id="close")
+    div(class="legend")
+        div(class="legend-center" ng-controller="legendCenter")
+            a(target="_blank" href="{{centerMap[center]['url']}}" ng-repeat="center in centers") 
+                img(title="{{centerMap[center]['fullName']}}" ng-src="{{centerMap[center]['logo']}}")
+        img(src="css/img/Type.png" class="legend-type")
+    div(id='dView' class="detail-view" ng-style="{display: (show?'block':'none')}" ng-controller="draggable")
+        a(id="close" class="btn" ng-click="close()")
             i(class="fa fa-times")
         div(id="dynamic")
-            div
-                div NeuroLINCS
-                div xyz
-                div dafda
+            div(class='pert-cell') {{pert}}, {{cell}}
+            div(class='milestone' ng-repeat="milestone in milestones")
+                div(class='assay')
+                    img(class="draggable-center-img" title="{{centerMap[milestone.center]['fullName']}}" ng-src="{{centerMap[milestone.center]['logo']}}") 
+                    |      {{milestone.assay}}
+                div(class='assay-info') {{milestone.assayInfo}}
     div(id="main", style="height:800px;padding:10px;")
     div(ng-controller="tagTable")
         table(ng-if="cells.length || perts.length" class="table tag-table")
@@ -77,8 +83,8 @@ html(lang='en', ng-app='chart')
                     li Quantitative discovery proteomics (SWATH), add perturbagens
                     li Epigenomics-ATAC-Seq for control and disease iMNs plus perturbations
   if dev
-    script(src='scripts/app.js')
     script(src="scripts/test-scatter.js")
+    script(src='scripts/app.js')
     script(src="scripts/expandable.js")
   else
     script(src="dist/main.min.js")

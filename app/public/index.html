@@ -8,8 +8,7 @@
     <link rel="stylesheet" type="text/css" href="libraries/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/typeahead.css">
     <link rel="stylesheet" href="css/main.css">
-     <link rel="stylesheet" href="css/tag.css">
-
+    <link rel="stylesheet" href="css/tag.css">
     <!-- libraries -->
     <script src="libraries/echarts/build/dist/echarts.js"></script>
     <script src="libraries/jquery/jquery.min.js"></script>
@@ -23,27 +22,14 @@
       <input type="text" placeholder="search perturbagens or cells" class="typeahead">
     </div>
     <div class="legend">
-      <div class="legend-center" ng-controller="legendCenter">
-        <a  target="_blank" href="{{centerMap[center]['url']}}" ng-repeat="center in centers">
-          <img  title="{{centerMap[center]['fullName']}}" ng-src="{{centerMap[center]['logo']}}">
-        </a>
-      </div>
-      <img src="css/img/Type.png" class="legend-type">
+      <div ng-controller="legendCenter" class="legend-center"><a target="_blank" href="{{centerMap[center]['url']}}" ng-repeat="center in centers"> <img title="{{centerMap[center]['fullName']}}" ng-src="{{centerMap[center]['logo']}}"></a></div><img src="css/img/Type.png" class="legend-type">
     </div>
-    <div id="dView" class="detail-view" ng-style="{display: (show?'block':'none')}" ng-controller="draggable">
-      <a id="close" class="btn" ng-click="close()"><i class="fa fa-times"></i></a>
+    <div id="dView" ng-style="{display: (show?'block':'none')}" ng-controller="draggable" class="detail-view"><a id="close" ng-click="close()" class="btn"><i class="fa fa-times"></i></a>
       <div id="dynamic">
-      <div class='pert-cell'>{{pert}}, {{cell}}</div>
-        <div class='milestone' ng-repeat="milestone in milestones">
-          <!-- <div class='center'>
-              {{milestone.center}}
-                
-          </div> -->
-          <div class='assay'>
-              <img  class="draggable-center-img" title="{{centerMap[milestone.center]['fullName']}}" ng-src="{{centerMap[milestone.center]['logo']}}">
-              {{milestone.assay}}
-          </div>
-          <div class='assay-info'>{{milestone.assayInfo}}</div>
+        <div class="pert-cell">{{pert}}, {{cell}}</div>
+        <div ng-repeat="milestone in milestones" class="milestone">
+          <div class="assay"><img title="{{centerMap[milestone.center]['fullName']}}" ng-src="{{centerMap[milestone.center]['logo']}}" class="draggable-center-img">     {{milestone.assay}}</div>
+          <div class="assay-info">{{milestone.assayInfo}}</div>
         </div>
       </div>
     </div>
@@ -94,6 +80,6 @@
     </div>
   </body>
   <script src="scripts/test-scatter.js"></script>
-   <script src="scripts/app.js"></script>
+  <script src="scripts/app.js"></script>
   <script src="scripts/expandable.js"></script>
 </html>
