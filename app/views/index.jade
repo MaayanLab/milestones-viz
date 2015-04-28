@@ -43,7 +43,7 @@ html(lang='en', ng-app='chart')
                 div(class='assay-info') {{milestone.assayInfo}}
     div(id="main", style="height:800px;padding:10px;")
     div(ng-controller="tagTable")
-        table(ng-if="cells.length || perts.length" class="table tag-table")
+        table(ng-style="{display: (cells.length || perts.length?'block':'none')}" class="table tag-table")
             toody
                 tr
                     td(class="row-name-cell") Cells:

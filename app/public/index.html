@@ -35,7 +35,7 @@
     </div>
     <div id="main" style="height:800px;padding:10px;"></div>
     <div ng-controller="tagTable">
-      <table ng-if="cells.length || perts.length" class="table tag-table">
+      <table ng-style="{display: (cells.length || perts.length?'block':'none')}" class="table tag-table">
         <toody>
           <tr>
             <td class="row-name-cell">Cells:</td>
@@ -79,5 +79,7 @@
       </div>
     </div>
   </body>
-  <script src="dist/main.min.js"></script>
+  <script src="scripts/test-scatter.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/expandable.js"></script>
 </html>

@@ -37,7 +37,7 @@ z-index:99;
   	top:122px;
   	position: absolute;
   	padding:5px;
-  	/*display: none;*/
+  	display: none;
 }
 
 .draggable-center-img{
@@ -106,6 +106,7 @@ z-index:99;
 .tag-table{
   margin-left: 100px;
   width:80%;
+  display:none;
 }
 
 .row-name-cell{
