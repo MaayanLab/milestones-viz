@@ -156,4 +156,4 @@ chartInput['serieses'] = serieses
 chartInput['tooltip'] = tooltipInfo
 import json
 with open('../app/public/data/chartInput','w') as cf:
-	cf.write(json.dumps(chartInput))
+ando	cf.write(json.dumps(chartInput))
