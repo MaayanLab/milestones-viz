@@ -7,7 +7,7 @@
             app: 'scripts',
         }
     });
-    
+
     // Step:4 require echarts and use it in the callback.
     // Step:4 动态加载echarts然后在回调函数中开始使用，注意保持按需加载结构定义图表路径
     require(
@@ -25,6 +25,9 @@
                     text: 'LINCS Milestones Overview',
                     subtext: 'An interactive plot',
                     padding: 0
+                },
+                grid:{
+                  x:150
                 },
                 tooltip : {
                     trigger: 'axis',
@@ -77,7 +80,7 @@
                     }
                 ]
             };
-                    
+
             $.getJSON('data/chartInput',function(input){
                 option.tooltip.formatter = function(params){
                         return input.perts[params.value[0]-1].pert + ', '
@@ -101,7 +104,8 @@
                         else
                             return input.cells[v-1].cell
                     },
-                    'interval':0
+                    'interval':0,
+                    // 'rotate':-60
                 };
                 // set symbol and color
                 // var colors =  d3.scale.category10().range();
@@ -173,9 +177,9 @@
                         markLine:{
                             data:[
                                 [
-                                    {name: '', value: pertClassCount['external'].count, 
+                                    {name: '', value: pertClassCount['external'].count,
                                     xAxis: pertClassCount['external'].x+0.5,
-                                    yAxis: -10}, 
+                                    yAxis: -10},
                                     {name: '', xAxis: pertClassCount['external'].x+0.5,
                                     yAxis: 58}
                                 ]
@@ -190,9 +194,9 @@
                             data:[
                                 [
                                     {name: '', value: pertClassCount['genetic'].count,
-                                    xAxis: pertClassCount['genetic'].x+0.5, 
-                                    yAxis: -10}, 
-                                    {name: '', xAxis: pertClassCount['genetic'].x+0.5, 
+                                    xAxis: pertClassCount['genetic'].x+0.5,
+                                    yAxis: -10},
+                                    {name: '', xAxis: pertClassCount['genetic'].x+0.5,
                                     yAxis: 58}
                                 ]
                             ]
@@ -205,10 +209,10 @@
                         markLine:{
                             data:[
                                 [
-                                    {name: '', value: pertClassCount['microenvironment'].count, 
-                                    xAxis: pertClassCount['microenvironment'].x+0.5, 
-                                    yAxis: -10}, 
-                                    {name: '', xAxis: pertClassCount['microenvironment'].x+0.5, 
+                                    {name: '', value: pertClassCount['microenvironment'].count,
+                                    xAxis: pertClassCount['microenvironment'].x+0.5,
+                                    yAxis: -10},
+                                    {name: '', xAxis: pertClassCount['microenvironment'].x+0.5,
                                     yAxis: 58}
                                 ]
                             ]
