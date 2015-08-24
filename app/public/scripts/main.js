@@ -146,7 +146,7 @@
                         group.symbolSize = 5.5
                     if(e[1]=='image')
                         group.symbolSize = 5.5
-                    option.group.push(group);
+                    option.series.push(group);
                 });
                 // set Marklines
                 pertClassCount = {}
