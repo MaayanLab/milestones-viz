@@ -1,19 +1,11 @@
-FROM library/node:0.10
+FROM node:0.10.31
 
-RUN apt-get update && apt-get install -y npm
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
 
-RUN npm install -g bower
-
-WORKDIR /home
-
-COPY . /home
-
-RUN npm install
-
-RUN bower install --allow-root
+COPY . /usr/src/app
+RUN npm install -g bower && npm install && bower install --allow-root
 
 EXPOSE 7070
 
-RUN echo "10.91.53.62" >> /etc/hosts
-
-CMD /bin/bash -c "node index.js"
+CMD [ "node", "index.js" ]
