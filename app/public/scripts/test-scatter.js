@@ -68,20 +68,20 @@
                 xAxis : [
                     {
                         type : 'value',
-                        scale:true,
+                        // scale:true,
                         name:'perturbagen'
                     }
                 ],
                 yAxis : [
                     {
                         type : 'value',
-                        scale:true,
+                        // scale:true,
                         name:'cell'
                     }
                 ]
             };
 
-            $.getJSON('data/chartInput',function(input){
+            $.getJSON('data/chartInput.json',function(input){
                 option.tooltip.formatter = function(params){
                         return input.perts[params.value[0]-1].pert + ', '
                         + input.cells[params.value[1]-1].cell
@@ -95,7 +95,7 @@
                         else
                             return input.perts[v-1].pert
                     },
-                    'interval':function(indx){return true}
+                    // 'interval':function(indx){return true}
                 };
                 option.yAxis[0].axisLabel = {
                     formatter: function(v){
@@ -104,18 +104,11 @@
                         else
                             return input.cells[v-1].cell
                     },
-                    'interval':0,
+                    // 'interval':0,
                     // 'rotate':-60
                 };
-                // set symbol and color
-                // var colors =  d3.scale.category10().range();
+
                 var centerColorMap = {
-                    // 'LINCS Transcriptomics':'#e377c2',
-                    // 'LINCS PCCSE':'#bcbd22',
-                    // 'HMS LINCS':'#17becf',
-                    // 'DTOXS':'#e7969c',
-                    // 'MEP LINCS':'#ff7f0e',
-                    // 'NeuroLINCS':'#2ca02c'
                      'LINCS Transcriptomics':'#0B609A',
                     'LINCS PCCSE':'#0B609A',
                     'HMS LINCS':'#C90016',
@@ -145,15 +138,15 @@
                 // set series
                 option.series = [];
                 input.centerAssays.forEach(function(e,i){
-                    var series = {}
-                    series.name = e[0]+' ,'+e[1];
-                    series.type = 'scatter';
-                    series.data = input.serieses[i];
+                    var group = {}
+                    group.name = e[0]+' ,'+e[1];
+                    group.type = 'scatter';
+                    group.data = input.serieses[i];
                     if(e[1]=='proteomic')
-                        series.symbolSize = 5.5
+                        group.symbolSize = 5.5
                     if(e[1]=='image')
-                        series.symbolSize = 5.5
-                    option.series.push(series);
+                        group.symbolSize = 5.5
+                    option.group.push(group);
                 });
                 // set Marklines
                 pertClassCount = {}

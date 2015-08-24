@@ -27,7 +27,6 @@
                     padding: 0
                 },
                 tooltip : {
-                    trigger: 'axis',
                     showDelay : 0,
                     axisPointer:{
                         show: true,
